@@ -2,63 +2,43 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  >
   <meta name="theme-color" content="#704765">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Keuangan">
+
   <title>Catatan Keuangan</title>
+
   <link rel="manifest" href="./manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
+  <link rel="icon" href="./assets/icons/icon-192.png">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+
   <style>
-    * { box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #faf7f9; }
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    #appFrame { width: 100%; height: 100%; border: 0; display: block; background: #faf7f9; }
-    #setup, #loading {
-      position: fixed; inset: 0; display: grid; place-items: center; padding: 24px;
-      color: #30252d; background: radial-gradient(circle at top right, rgba(240,184,203,.28), transparent 36%), #faf7f9;
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #faf7f9;
     }
-    .card { width: min(100%, 430px); padding: 28px; text-align: center; background: #fff; border: 1px solid #eadfe6; border-radius: 24px; box-shadow: 0 12px 36px rgba(73,43,65,.10); }
-    .logo { width: 88px; height: 88px; border-radius: 22px; margin-bottom: 14px; }
-    h1 { margin: 0 0 8px; font-size: 1.35rem; }
-    p { margin: 0; color: #796e76; line-height: 1.55; }
-    code { overflow-wrap: anywhere; color: #704765; }
-    #loading { z-index: 2; transition: opacity .2s ease; }
-    #loading.hidden { opacity: 0; pointer-events: none; }
-    .spinner { width: 34px; height: 34px; margin: 0 auto 14px; border: 3px solid #eadfe6; border-top-color: #704765; border-radius: 50%; animation: spin .8s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      border: 0;
+    }
   </style>
 </head>
+
 <body>
-  <div id="setup" hidden>
-    <div class="card">
-      <img class="logo" src="./assets/icons/icon-192.png" alt="">
-      <h1>Link aplikasi belum dipasang</h1>
-      <p>Buka <code>config.js</code>, lalu isi URL deployment Apps Script yang berakhiran <code>/exec</code>.</p>
-    </div>
-  </div>
-  <div id="loading">
-    <div class="card"><div class="spinner"></div><p>Membuka catatan keuangan…</p></div>
-  </div>
-  <iframe id="appFrame" title="Catatan Keuangan" allow="clipboard-write"></iframe>
-  <script src="./config.js"></script>
-  <script>
-    (function () {
-      var url = https://7vp2adu.s.gy/pengeluaran;
-      var loading = document.getElementById('loading');
-      var frame = document.getElementById('appFrame');
-      if (!url || url.indexOf('PASTE_') === 0) {
-        loading.hidden = true;
-        document.getElementById('setup').hidden = false;
-        return;
-      }
-      frame.addEventListener('load', function () { loading.classList.add('hidden'); });
-      frame.src = url;
-      setTimeout(function () { loading.classList.add('hidden'); }, 12000);
-      if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(function () {});
-    })();
-  </script>
+  <iframe
+    src="https://7vp2adu.s.gy/pengeluaran"
+    title="Catatan Keuangan"
+    allow="clipboard-write"
+  ></iframe>
 </body>
 </html>

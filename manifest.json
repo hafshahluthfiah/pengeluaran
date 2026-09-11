@@ -1,0 +1,25 @@
+{
+  "name": "Catatan Keuangan",
+  "short_name": "Keuangan",
+  "description": "Pencatatan pemasukan, pengeluaran, saldo, dan pembiayaan pribadi.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f9",
+  "theme_color": "#704765",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

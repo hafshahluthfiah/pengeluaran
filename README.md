@@ -1,11 +1,11 @@
 # Catatan Keuangan — PWA GitHub Pages
 
-Frontend ini mengambil dan menyimpan data melalui Google Apps Script Web App.
+Frontend GitHub ini menjadi cangkang PWA dan memuat Google Apps Script Web App di dalamnya. Cara ini membuat `google.script.run` tetap bekerja dan menghindari error CORS/`Failed to fetch`.
 
 ## 1. Perbarui Apps Script
 
-1. Ganti isi `Code.gs` di project Apps Script dengan file `Code.gs` dari folder ini.
-2. Biarkan `Index.html` di Apps Script tetap ada; versi itu masih bisa dibuka langsung dari Apps Script.
+1. Pastikan `Code.gs` dan `Index.html` yang sebelumnya dibuat masih ada di project Apps Script. Salinan tampilannya tersedia sebagai `Index-appscript.html`; kalau dipakai, ubah nama filenya menjadi `Index.html` saat ditempel di Apps Script.
+2. Pastikan `doGet()` memakai `.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)` agar bisa dimuat dari GitHub Pages.
 3. Klik **Save**.
 4. Buka **Deploy → Manage deployments → Edit**.
 5. Pilih **New version**, atur **Who has access: Anyone**, lalu klik **Deploy**.
@@ -16,7 +16,7 @@ Frontend ini mengambil dan menyimpan data melalui Google Apps Script Web App.
 Buka `config.js`, lalu ganti:
 
 ```js
-apiUrl: 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE'
+appScriptUrl: 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE'
 ```
 
 dengan URL `/exec` dari langkah sebelumnya.
